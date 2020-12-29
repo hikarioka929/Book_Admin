@@ -3,14 +3,17 @@ class BooksController < ApplicationController
     around_action :action_logger, only: [:destroy]
 
     def show
-        render :show
+        respond_to do |format|
+            format.html
+            format.json
+        end
     end
 
     def destroy
         @book.destroy
         respond_to do |format|
             format.html { redirect_to '/' }
-            format.json { head: no_content }
+            format.json { head :no_content }
         end
     end
 
