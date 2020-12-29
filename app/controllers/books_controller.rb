@@ -3,11 +3,7 @@ class BooksController < ApplicationController
     around_action :action_logger, only: [:destroy]
 
     def show
-        # format選択　URLの拡張子やリクエストヘッダにより変わる
-        respond_to do |format|
-            format.html
-            format.json
-        end
+        render :show
     end
 
     def destroy
